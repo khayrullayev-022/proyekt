@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; 
+      padding: 0; 
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    #login-section {
+      max-width: 400px;
+      width: 100%;
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .link {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .link a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="login-section">
+    <h2>Saytga Kirish</h2>
+    <div class="error" id="errorMsg"></div>
+    <input type="text" id="loginUser" placeholder="Username" />
+    <input type="password" id="loginPass" placeholder="Parol" />
+    <button onclick="login()">Kirish</button>
+    <div class="link">
+      <a href="#" onclick="showReset()">Parolni unutdingizmi?</a>
+    </div>
+  </div>
+
+  <script>
+    const validUsers = {
+      "teacher_english": "12345678",
+      "site_admin": "12345678"
+    };
+
+    function login() {
+      const username = document.getElementById("loginUser").value.trim();
+      const password = document.getElementById("loginPass").value.trim();
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (validUsers[username] && validUsers[username] === password) {
+        // To'g'ri kirilgan bo'lsa, "site-project-talim.html" sahifasiga yo'naltiradi
+        window.location.href = "https://khayrullayev-02.github.io/site-test/site-peroject-talim.html";
+      } else {
+        errorMsg.textContent = "Login yoki parolingiz xato tekshirib qaytadan urunib ko'ring!";
+      }
+    }
+
+    // Agar kerak bo'lsa, parolni tiklash funksiyasini ham qo'shishingiz mumkin.
+    function showReset() {
+      alert("Parolni tiklash funksiyasi qo'shilmagan.");
+    }
+  </script>
+
+</body>
+</html>
